@@ -1,0 +1,56 @@
+metadata:
+  namespace: default
+  annotations:
+    backstage.io/managed-by-location: file:/Users/okalinichenko/developer-hub/examples/entities.yaml
+    backstage.io/managed-by-origin-location: file:/Users/okalinichenko/developer-hub/examples/entities.yaml
+    backstage.io/source-location: url:https://github.com/adi-partners/ad71260
+  name: ad71260-adi-bm
+  title: AD71260 Bare-Metal Device Drivers
+  description: |
+    AD71260 Bare-Metal Device Drivers
+    * UART
+  version: main
+  classification: software
+  license:
+    - ADI
+  tags:
+    - device-drivers
+    - uart
+    - bare-metal
+    - invalid-catalog-info
+  links:
+    - url: https://confluence.analog.com/display/ABUMEAD/Mead
+      title: Project Team Documentation
+      icon: web
+    - url: https://confluence.analog.com/display/ABUMEAD/Mead+SW+Requirements
+      title: Software Requirements
+      icon: web
+  uid: 7b2f706c-359b-48f7-9e95-52cae649e50a
+  etag: 9d550e3d69d9a22bb4dfea6bd2c2af7942ade3c4
+apiVersion: backstage.io/v1alpha1
+kind: Component
+spec:
+  owner: group:default/sw-systems-design-eng
+  type: library
+  lifecycle: execution
+  dependsOn:
+    - Component:ad71260-adi-bm-uart
+relations:
+  - type: dependsOn
+    targetRef: component:default/ad71260-adi-bm-uart
+    target:
+      kind: component
+      namespace: default
+      name: ad71260-adi-bm-uart
+  - type: hasPart
+    targetRef: component:default/ad71260-adi-bm-1.0.0
+    target:
+      kind: component
+      namespace: default
+      name: ad71260-adi-bm-1.0.0
+  - type: ownedBy
+    targetRef: group:default/sw-systems-design-eng
+    target:
+      kind: group
+      namespace: default
+      name: sw-systems-design-eng
